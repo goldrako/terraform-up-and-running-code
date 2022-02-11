@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-northeast-2"
 }
 
 resource "aws_db_instance" "example" {
@@ -8,16 +8,16 @@ resource "aws_db_instance" "example" {
   instance_class      = "db.t2.micro"
   name                = "example_database_prod"
   username            = "admin"
-  password            = "${var.db_password}"
+  password            = var.db_password
   skip_final_snapshot = true
 }
 
 terraform {
   backend "s3" {
-    bucket = "(생성한 버킷 이름)"
-    key    = "prod/data-stores/mysql/terraform.tfstate"
-    region = "us-east-1"
+    bucket  = "(생성한 버킷 이름)"
+    key     = "prod/data-stores/mysql/terraform.tfstate"
+    region  = "ap-northeast-2"
     encrypt = true
-#    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
+    #    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
   }
 }

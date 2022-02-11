@@ -31,7 +31,7 @@ export AWS_SECRET_ACCESS_KEY=(your secret access key)
 Deploy a test database of some sort that the web server cluster can connect to. For example, you could deploy the
 Terraform configurations under 
 [code/terraform/06-terraform-team/live/stage/data-stores/mysql](/code/terraform/06-terraform-team/live/stage/data-stores/mysql).
-Make sure to note down the AWS region you're deploying into (e.g. `us-east-1`) as well as the S3 bucket name (e.g.
+Make sure to note down the AWS region you're deploying into (e.g. `ap-northeast-2`) as well as the S3 bucket name (e.g.
 `my-terraform-state`) and key (e.g. `qa/stage/data-stores/mysql/terraform.tfstate`) you use to store the remote state 
 data of the database.
 
@@ -42,7 +42,7 @@ and run the following:
 ```
 ruby \
   ../../../../../../ruby/06-terraform-team/terraform-test.rb \
-  us-east-1 \
+  ap-northeast-2 \
   my-terraform-state \
   qa/stage/data-stores/mysql/terraform.tfstate
 ```

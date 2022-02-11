@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-northeast-2"
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "${var.bucket_name}"
+  bucket = var.bucket_name
 
   versioning {
     enabled = true
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "terraform_state" {
 #  backend "s3" {
 #    bucket = "(생성한 버킷 이름)"
 #    key    = "terraform.tfstate"
-#    region = "us-east-1"
+#    region = "ap-northeast-2"
 #    encrypt = true
 ##   dynamodb_table = "(아래에서 생성한 테이블 이름)"
 #  }

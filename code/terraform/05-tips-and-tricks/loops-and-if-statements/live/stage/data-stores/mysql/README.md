@@ -30,7 +30,7 @@ terraform {
   backend "s3" {
     bucket = "(생성한 버킷 이름)"
     key    = "live/stage/data-stores/mysql/terraform.tfstate"
-    region = "us-east-1"
+    region = "ap-northeast-2"
     encrypt = true
 #    dynamodb_table = "(생성한 DynamoDB 테이블 이름)"
   }

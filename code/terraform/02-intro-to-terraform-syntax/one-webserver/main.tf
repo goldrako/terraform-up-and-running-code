@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-northeast-2"
 }
 
 resource "aws_instance" "example" {
@@ -13,7 +13,7 @@ resource "aws_instance" "example" {
               nohup busybox httpd -f -p 8080 &
               EOF
 
-  tags {
+  tags = {
     Name = "terraform-example"
   }
 }
@@ -30,5 +30,5 @@ resource "aws_security_group" "instance" {
 }
 
 output "public_ip" {
-  value = "${aws_instance.example.public_ip}"
+  value = aws_instance.example.public_ip
 }

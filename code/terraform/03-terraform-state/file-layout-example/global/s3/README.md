@@ -50,7 +50,7 @@ terraform {
   backend "s3" {
     bucket = "(생성한 버킷 이름)"
     key    = "terraform.tfstate"
-    region = "us-east-1"
+    region = "ap-northeast-2"
     encrypt = true
   }
 }

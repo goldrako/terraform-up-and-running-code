@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-northeast-2"
 }
 
 module "webserver_cluster" {
@@ -9,8 +9,8 @@ module "webserver_cluster" {
   server_text = "Hello, World"
 
   cluster_name           = "webservers-prod"
-  db_remote_state_bucket = "${var.db_remote_state_bucket}"
-  db_remote_state_key    = "${var.db_remote_state_key}"
+  db_remote_state_bucket = var.db_remote_state_bucket
+  db_remote_state_key    = var.db_remote_state_key
 
   instance_type      = "m4.large"
   min_size           = 2

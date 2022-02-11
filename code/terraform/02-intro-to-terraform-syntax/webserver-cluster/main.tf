@@ -3,7 +3,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = "ap-northeast-2"
 }
 
 resource "aws_launch_configuration" "example" {
@@ -23,7 +23,7 @@ resource "aws_launch_configuration" "example" {
 }
 
 resource "aws_autoscaling_group" "example" {
-  launch_configuration = "${aws_launch_configuration.example.id}"
+  launch_configuration = aws_launch_configuration.example.id
   availability_zones   = ["${data.aws_availability_zones.all.names}"]
 
   load_balancers    = ["${aws_elb.example.name}"]
@@ -43,8 +43,8 @@ resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
 
   ingress {
-    from_port   = "${var.server_port}"
-    to_port     = "${var.server_port}"
+    from_port   = var.server_port
+    to_port     = var.server_port
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -64,7 +64,7 @@ resource "aws_elb" "example" {
   listener {
     lb_port           = 80
     lb_protocol       = "http"
-    instance_port     = "${var.server_port}"
+    instance_port     = var.server_port
     instance_protocol = "http"
   }
 
